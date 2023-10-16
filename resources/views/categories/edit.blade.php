@@ -1,22 +1,28 @@
 <x-layout>
     <x-slot name="title">
-        カテゴリ編集
+        カテゴリ - 編集
     </x-slot>
 
-    <h1>カテゴリ編集</h1>
-    <a href="{{ route('index') }}">TOPページに戻る</a>
+    <header>
+        <h1>カテゴリ - 編集</h1>
+        <a href="{{ route('index') }}" class="button back">TOPページに戻る</a>
+    </header>
 
-    <form method="post" action="{{ route('categories.update', $category) }}">
-        @method('PATCH')
-        @csrf
+    <div class="block">
+        <form method="post" action="{{ route('categories.update', $category) }}">
+            @method('PATCH')
+            @csrf
 
-        <label>
-            カテゴリ名
-            <input type="text" name="name" value="{{ old('name', $category->name) }}">
-        </label>
-        @error('name')
-            <p>{{ $message }}</p>
-        @enderror
-        <button>保存</button>
-    </form>
+            <div class="input-block">
+                <label>
+                    カテゴリ名
+                    <input type="text" name="name" value="{{ old('name', $category->name) }}">
+                </label>
+                @error('name')
+                    <p>{{ $message }}</p>
+                @enderror
+            </div>
+            <button class="button save">保存</button>
+        </form>
+    </div>
 </x-layout>

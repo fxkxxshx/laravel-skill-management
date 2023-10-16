@@ -5,26 +5,34 @@
 
     <h1>保有スキル管理</h1>
 
-    <h2>カテゴリ</h2>
-    <a href="{{ route('categories.create') }}">新規作成</a>
+    <section class="block">
+        <header>
+            <h2>カテゴリ</h2>
+            <a href="{{ route('categories.create') }}" class="button create">新規作成</a>
+        </header>
 
-    <h3>カテゴリ一覧</h3>
-    <ul>
-        @forelse ($categories as $category)
-            <li>
-                <span>{{ $category->name }}</span>
-                <a href="{{ route('categories.edit', $category) }}">編集</a>
-                <form method="post" action="{{ route('categories.destroy', $category) }}" class="delete-post">
-                    @method('DELETE')
-                    @csrf
+        <div class="row heading">
+            <p>カテゴリ名</p>
+            <p>編集</p>
+            <p>削除</p>
+        </div>
+        <ul>
+            @forelse ($categories as $category)
+                <li class="row category">
+                    <span>{{ $category->name }}</span>
+                    <span><a href="{{ route('categories.edit', $category) }}" class="button edit">編集</a></span>
+                    <form method="post" action="{{ route('categories.destroy', $category) }}" class="delete-post">
+                        @method('DELETE')
+                        @csrf
 
-                    <button>削除</button>
-                </form>
-            </li>
-        @empty
-            <li>まだ登録がありません。</li>
-        @endforelse
-    </ul>
+                        <button class="button delete">削除</button>
+                    </form>
+                </li>
+            @empty
+                <li>まだ登録がありません。</li>
+            @endforelse
+        </ul>
+    </section>
 
     <script>
         const posts = document.querySelectorAll('.delete-post');
