@@ -23,8 +23,8 @@ h2 {
 }
 
 h3  {
-    font-size: 20px;
-    margin-top: 20px;
+    font-size: 18px;
+    padding: 8px 0;
 }
 
 header {
@@ -33,7 +33,8 @@ header {
     justify-content: space-between;
 }
 
-input[type="text"] {
+input[type="text"],
+select {
     box-sizing: border-box;
     padding: 6px;
     margin-top: 6px;
@@ -57,6 +58,10 @@ input[type="text"] {
     padding: 6px 10px;
 }
 
+.button:hover {
+    opacity: 0.7;
+}
+
 .button.back {
     background-color: rgb(111, 111, 111);
 }
@@ -75,12 +80,27 @@ input[type="text"] {
 
 .button.save {
     background-color: rgb(0, 166, 22);
-    margin-top: 20px;
 }
 
 .container {
     margin: 40px auto;
     width: calc(100% - 80px);
+}
+
+.experience-block {
+    align-items: flex-start;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 0.25fr 0.75fr;
+    margin-top: 20px;
+}
+
+.input-block + .button.save {
+    margin-top: 20px;
+}
+
+.input-block + .input-block {
+    margin-top: 20px;
 }
 
 .notice {
@@ -92,15 +112,26 @@ input[type="text"] {
     align-items: center;
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr 100px 100px;
 }
 
-.row.category {
+.row > .text {
+    padding-left: 6px;
+}
+
+.row:not(.heading) {
     padding: 20px 0;
 }
 
-.row.category + .row.category {
+.row:not(.heading) + .row:not(.heading) {
     border-top: 1px solid #ccc;
+}
+
+.row.category {
+    grid-template-columns: 1fr 100px 100px;
+}
+
+.row.experience {
+    grid-template-columns: 1fr 220px;
 }
 
 .row.heading {
@@ -109,6 +140,14 @@ input[type="text"] {
     padding: 10px 0;
 }
 
+.row.heading.experience {
+    margin-top: 0;
+}
+
 .row.heading > p {
     padding-left: 6px;
+}
+
+.row.skill {
+    grid-template-columns: 0.5fr 0.5fr 100px 100px;
 }

@@ -19,7 +19,7 @@
                     <input type="text" name="name" value="{{ old('name', $category->name) }}">
                 </label>
                 @error('name')
-                    <p>{{ $message }}</p>
+                    <p class="notice">{{ $message }}</p>
                 @enderror
             </div>
             <button class="button save">保存</button>

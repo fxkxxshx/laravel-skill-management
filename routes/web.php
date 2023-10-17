@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SkillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', [CategoryController::class, 'index'])
     ->name('index');
 
+// カテゴリ
 Route::get('/categories/create', [CategoryController::class, 'create'])
     ->name('categories.create');
 
@@ -34,3 +36,25 @@ Route::patch('/categories/{category}/update', [CategoryController::class, 'updat
 Route::delete('/categories/{category}/destroy', [CategoryController::class, 'destroy'])
     ->name('categories.destroy')
     ->where('category', '[0-9]+');
+
+// スキル
+Route::get('/skills/create', [SkillController::class, 'create'])
+    ->name('skills.create');
+
+Route::post('/skills/store', [SkillController::class, 'store'])
+    ->name('skills.store');
+
+Route::get('/skills/{skill}/edit', [SkillController::class, 'edit'])
+    ->name('skills.edit')
+    ->where('skill', '[0-9]+');
+
+Route::patch('/skills/{skill}/update', [SkillController::class, 'update'])
+    ->name('skills.update')
+    ->where('skill', '[0-9]+');
+
+Route::delete('/skills/{skill}/destroy', [SkillController::class, 'destroy'])
+    ->name('skills.destroy')
+    ->where('skill', '[0-9]+');
+
+Route::patch('/skills/register', [SkillController::class, 'register'])
+    ->name('skills.register');
